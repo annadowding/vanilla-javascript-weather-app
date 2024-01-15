@@ -9,11 +9,11 @@
 function callApi (response) {
     console.log(response);
       let temperatureElement = document.querySelector("#temperature");
-      temperatureElement.innerHTML = (Math.round(response.data.main.temp));
       let descriptionElement = document.querySelector("#description");
-      descriptionElement.innerHTML = "Description: " + response.data.weather[0].description;
-      let celsiusElement=document.querySelector("#celsius");
-      celsiusElement.innerHTML = "℃";
+
+
+      temperatureElement.innerHTML = `${(Math.round(response.data.main.temp))}℃`;
+      descriptionElement.innerHTML = `Description: ${response.data.weather[0].description}`;
 }
 
 function parseApi (city) {
