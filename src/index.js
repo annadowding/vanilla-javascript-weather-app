@@ -10,18 +10,21 @@ function callApi (response) {
     console.log(response);
       let temperatureElement = document.querySelector("#temperature");
       let descriptionElement = document.querySelector("#description");
+      let timeElement = document.querySelector("#time");
+      let humidityElement = document.querySelector("#humidity");
+      let windElement = document.querySelector("#wind");
+
       
       temperatureElement.innerHTML = `${Math.round(response.data.main.temp)}℃`;
       descriptionElement.innerHTML = `Description: ${response.data.weather[0].description}`;
+      humidityElement.innerHTML = `Humidity: ${response.data.main.humidity}%`;
+      windElement.innerHTML = `Wind Speed: ${Math.round(response.data.wind.speed)} km/h`;
       
       let hour = new Date().getHours();
-      let timeElement = document.querySelector("#time");
-      
-      
       let minutes = new Date().getMinutes();
     
       if (minutes < 10) {
-         minutesElement.innerHTML = `0${minutes}`;
+         timeElement.innerHTML = `${hour}:$0{minutes}`;
        }
        timeElement.innerHTML = `${hour}:${minutes}`;
 
