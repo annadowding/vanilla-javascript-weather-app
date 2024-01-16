@@ -6,6 +6,19 @@
     
 // }
 
+function displayForecast (response) {
+    console.log(response.data.list);
+    let minTempElement=document.querySelector(".minTemp");
+    minTempElement.innerHTML = response.data.list[0].main.temp_min;
+}
+
+
+function handleForecast (city) {
+    let apiKey = "d1b6ead1e59b61fc5c228b89a0df9361";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&cnt=7&appid=${apiKey}&units=metric`; 
+      axios.get(apiUrl).then(displayForecast);
+}
+
 function callApi (response) {
     console.log(response);
       let temperatureElement = document.querySelector("#temperature");
@@ -30,7 +43,10 @@ function callApi (response) {
     } else if (minutes < 10) {
         timeElement.innerHTML = `${hour}:0${minutes}`;
        }
+       
+      handleForecast(userInput.value);
     }
+
 
      
 
@@ -42,11 +58,11 @@ function parseApi (city) {
 
 function updateCity (event) {
     event.preventDefault();
-    let userInput = document.querySelector("#search")
+    
     parseApi(userInput.value);
 }
 
 let submit =document.querySelector("#submit");
 submit.addEventListener("click", updateCity);
-
+let userInput = document.querySelector("#search");
 
