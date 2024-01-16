@@ -7,9 +7,25 @@
 // }
 
 function displayForecast (response) {
-    console.log(response.data.list);
-    let minTempElement=document.querySelector(".minTemp");
-    minTempElement.innerHTML = response.data.list[0].main.temp_min;
+    // console.log(response.data.list);
+    let minTempElementMon=document.querySelector(".minTempMon");
+    minTempElementMon.innerHTML = `${Math.round(response.data.list[0].main.temp_min)}℃`;
+
+    let minTempElementTue = document.querySelector(".minTempTue");
+    minTempElementTue.innerHTML = `${Math.round(
+      response.data.list[1].main.temp_min
+    )}℃`;
+
+    // minTempElement.innerHTML = Object.values(response.data.list).forEach(val => console.log(val.main.temp_min));
+
+    // minTempElement.innerHTML = Object.values(response.data.list).forEach(function(val){
+    //     console.log(val.main.temp_min);
+    // })
+
+    // for(let temp_min in response.data.list.main) {
+    //     minTempElement.innerHTML = `${temp_min}:${response.data.list[temp_min]}`;
+    // }
+   
 }
 
 
