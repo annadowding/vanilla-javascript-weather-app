@@ -23,11 +23,13 @@ function callApi (response) {
       let hour = new Date().getHours();
       let minutes = new Date().getMinutes();
     
-      if (minutes < 10) {
-         timeElement.innerHTML = `${hour}:$0{minutes}`;
+      if (hour < 10 && minutes <10) {
+         timeElement.innerHTML = `0${hour}:0${minutes}`;
+       } else if (hour < 10){
+        timeElement.innerHTML = `0${hour}:${minutes}`;
+    } else if (minutes < 10) {
+        timeElement.innerHTML = `${hour}:0${minutes}`;
        }
-       timeElement.innerHTML = `${hour}:${minutes}`;
-
     }
 
      
