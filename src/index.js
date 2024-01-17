@@ -1,37 +1,40 @@
 
+
 function displayForecast (response) {
-console.log(response.data.list);
-    let forecastElement=document.querySelector("#forecast")
-    
-    let forecastHtml = "";
+    console.log(response);
+      let forecastElement = document.querySelector("#forecast");
 
-    let icons = 
 
-    
-    response.data.list.forEach(function(day) {
-            forecastHtml =
-              forecastHtml +
-              `<div>${day.dt}</div>` +
-              `<img src="https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png
+      let forecastHtml = "";
 
-" alt="" />` +
-              `<div>${day.main.temp}
+      response.data.list.forEach(function (today) {
+        console.log(today);
+        let date = new Date(today.dt * 1000);
+        let days = ["Sun", "Mon","Tue", "Wed", "Thu", "Fri", "Sat"];
+        let day = days[date.getDay()];
+        let text = today.dt_txt;
+if (text.includes("15:00:00")) {
+        forecastHtml =
+          forecastHtml +
+          `<div>${day}</div>` +
+          `<img src="https://openweathermap.org/img/wn/${today.weather[0].icon}@2x.png"/>` +
+          `<div>${today.main.temp}
             </div>
-            <div>${day.main.humidity}
+            <div>${today.main.humidity}
             </div>`;
-            
-            forecastElement.innerHTML = forecastHtml;
-    })
+
+        forecastElement.innerHTML = forecastHtml;
+      }})
+    };
     
-    }
-
-
-
 
 
 function handleForecast (city) {
     let apiKey = "d1b6ead1e59b61fc5c228b89a0df9361";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&cnt=6&appid=${apiKey}&units=metric`; 
+    let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&cnt=200&appid=${apiKey}&units=metric`; 
+
+
+
       axios.get(apiUrl).then(displayForecast);
 }
 
