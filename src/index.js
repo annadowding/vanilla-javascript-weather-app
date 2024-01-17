@@ -16,12 +16,16 @@ function displayForecast (response) {
 if (text.includes("15:00:00")) {
         forecastHtml =
           forecastHtml +
-          `<div>${day}</div>` +
-          `<img src="https://openweathermap.org/img/wn/${today.weather[0].icon}@2x.png"/>` +
-          `<div>${today.main.temp}
-            </div>
-            <div>${today.main.humidity}
-            </div>`;
+          `<div>
+              <div class="forecast-day">${day}</div>
+              <img src="https://openweathermap.org/img/wn/${today.weather[0].icon}@2x.png"/>
+              <div>
+                  <span>${Math.round(today.main.temp)}℃
+                    </span>
+                    <span>${Math.round(today.main.feels_like)}℃
+                    </span>
+              </div>
+          </div>`;
 
         forecastElement.innerHTML = forecastHtml;
       }})
@@ -83,4 +87,8 @@ function updateCity (event) {
 let submit =document.querySelector("#submit");
 submit.addEventListener("click", updateCity);
 let userInput = document.querySelector("#search");
+
+parseApi("London");
+handleForecast("London");
+
 
