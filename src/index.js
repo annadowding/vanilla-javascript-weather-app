@@ -1,32 +1,24 @@
-
-// function displayWeatherData (event) {
-//     event.preventDefault();
-//     let temperatureElement = document.querySelector("#temperature");
-//     temperatureElement.innerHTML= "Hello from index.js";
-    
-// }
-
 function displayForecast (response) {
-    // console.log(response.data.list);
-    let minTempElementMon=document.querySelector(".minTempMon");
-    minTempElementMon.innerHTML = `${Math.round(response.data.list[0].main.temp_min)}℃`;
+    let forecastElement=document.querySelector("#forecast")
+    let forecastHtml = "";
 
-    let minTempElementTue = document.querySelector(".minTempTue");
-    minTempElementTue.innerHTML = `${Math.round(
-      response.data.list[1].main.temp_min
-    )}℃`;
+    response.data.list.forEach(function(day,index) {
+        if (index < 5) {
+            forecastHtml =
+              forecastHtml +
+              `<div>${day.main.temp}
+            </div>
+            <div>${day.main.humidity}
+            </div>`;
+            
+            forecastElement.innerHTML = forecastHtml;
+        }
+    })
+    
+    }
 
-    // minTempElement.innerHTML = Object.values(response.data.list).forEach(val => console.log(val.main.temp_min));
 
-    // minTempElement.innerHTML = Object.values(response.data.list).forEach(function(val){
-    //     console.log(val.main.temp_min);
-    // })
 
-    // for(let temp_min in response.data.list.main) {
-    //     minTempElement.innerHTML = `${temp_min}:${response.data.list[temp_min]}`;
-    // }
-   
-}
 
 
 function handleForecast (city) {
