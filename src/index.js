@@ -1,18 +1,20 @@
+
 function displayForecast (response) {
+
     let forecastElement=document.querySelector("#forecast")
+    
     let forecastHtml = "";
 
-    response.data.list.forEach(function(day,index) {
-        if (index < 5) {
-            forecastHtml =
-              forecastHtml +
-              `<div>${day.main.temp}
+    
+    response.data.list.forEach(function(day) {
+            forecastHtml = 
+            forecastHtml +
+            `<div>${day.main.temp}
             </div>
             <div>${day.main.humidity}
             </div>`;
             
             forecastElement.innerHTML = forecastHtml;
-        }
     })
     
     }
@@ -23,12 +25,11 @@ function displayForecast (response) {
 
 function handleForecast (city) {
     let apiKey = "d1b6ead1e59b61fc5c228b89a0df9361";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&cnt=7&appid=${apiKey}&units=metric`; 
+    let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&cnt=6&appid=${apiKey}&units=metric`; 
       axios.get(apiUrl).then(displayForecast);
 }
 
 function callApi (response) {
-    console.log(response);
       let temperatureElement = document.querySelector("#temperature");
       let descriptionElement = document.querySelector("#description");
       let timeElement = document.querySelector("#time");
