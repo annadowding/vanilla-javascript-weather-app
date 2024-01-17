@@ -1,15 +1,21 @@
 
 function displayForecast (response) {
-
+console.log(response.data.list);
     let forecastElement=document.querySelector("#forecast")
     
     let forecastHtml = "";
 
+    let icons = 
+
     
     response.data.list.forEach(function(day) {
-            forecastHtml = 
-            forecastHtml +
-            `<div>${day.main.temp}
+            forecastHtml =
+              forecastHtml +
+              `<div>${day.dt}</div>` +
+              `<img src="https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png
+
+" alt="" />` +
+              `<div>${day.main.temp}
             </div>
             <div>${day.main.humidity}
             </div>`;
