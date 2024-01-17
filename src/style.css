@@ -1,5 +1,7 @@
 body {
-    padding-top: 15px;
+    padding: 15px 0 0 0;
+    margin: 0;
+
 }
 
 h1 {
@@ -44,11 +46,45 @@ form {
     font-weight: bold;
 }
 
+/* .weatherData {
+    display: flex;
+    justify-content:space-around;
+
+} */
+
+.weather-data-detail {
+    padding: 0;
+}
+.weather-data-temperature {
+    text-align: right;
+    padding: 0;
+}
+
+
+
 .forecast {
-    display:flex;
-    align-items: center;    
+    display:inline-flex;
+    text-align: center;   
+    padding-top: 10px;
+}
+
+.forecast-day {
+    opacity: 70%;
+}
+
+.maxTemp {
+    font-weight: bold;
+    color: #F65282;
+    padding: 5px;
+}
+
+.minTemp {
+    color: #F65282;
+    opacity: 70%;
 }
 
 footer {
-    padding-top: 30px; 
+    padding-top: 10px; 
+    text-align: center;
+    font-size: 14px;
 }

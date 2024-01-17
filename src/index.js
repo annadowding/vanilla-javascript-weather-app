@@ -19,12 +19,10 @@ if (text.includes("15:00:00")) {
           `<div>
               <div class="forecast-day">${day}</div>
               <img src="https://openweathermap.org/img/wn/${today.weather[0].icon}@2x.png"/>
-              <div>
-                  <span>${Math.round(today.main.temp)}℃
+                  <span class="maxTemp">${Math.round(today.main.temp)}℃
                     </span>
-                    <span>${Math.round(today.main.feels_like)}℃
+                    <span class="minTemp">${Math.round(today.main.feels_like)}℃
                     </span>
-              </div>
           </div>`;
 
         forecastElement.innerHTML = forecastHtml;
@@ -59,11 +57,11 @@ function callApi (response) {
       let minutes = new Date().getMinutes();
     
       if (hour < 10 && minutes <10) {
-         timeElement.innerHTML = `0${hour}:0${minutes}`;
+         timeElement.innerHTML = `GMT: 0${hour}:0${minutes}`;
        } else if (hour < 10){
-        timeElement.innerHTML = `0${hour}:${minutes}`;
+        timeElement.innerHTML = `GMT: 0${hour}:${minutes}`;
     } else if (minutes < 10) {
-        timeElement.innerHTML = `${hour}:0${minutes}`;
+        timeElement.innerHTML = `GMT: ${hour}:0${minutes}`;
        }
        
       handleForecast(userInput.value);
