@@ -18,7 +18,7 @@ if (text.includes("15:00:00")) {
           forecastHtml +
           `<div>
               <div class="forecast-day">${day}</div>
-              <img src="https://openweathermap.org/img/wn/${today.weather[0].icon}@2x.png"/>
+              <img src="https://openweathermap.org/img/wn/${today.weather[0].icon}@2x.png" class="forecast-icon"/>
                   <span class="maxTemp">${Math.round(today.main.temp)}℃
                     </span>
                     <span class="minTemp">${Math.round(today.main.feels_like)}℃
@@ -41,6 +41,9 @@ function handleForecast (city) {
 }
 
 function callApi (response) {
+  console.log(response);
+  let cityNameElement = document.querySelector("#cityName");
+  let temperatureIconElement = document.querySelector("#temperatureIcon")
       let temperatureElement = document.querySelector("#temperature");
       let descriptionElement = document.querySelector("#description");
       let timeElement = document.querySelector("#time");
@@ -52,7 +55,8 @@ function callApi (response) {
       descriptionElement.innerHTML = `Description: ${response.data.weather[0].description}`;
       humidityElement.innerHTML = `Humidity: ${response.data.main.humidity}%`;
       windElement.innerHTML = `Wind Speed: ${Math.round(response.data.wind.speed)} km/h`;
-      
+      cityNameElement.innerHTML=`${response.data.name}`
+      temperatureIconElement.innerHTML = `<img src="https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png" id="temperatureIcon"/>`;
       let hour = new Date().getHours();
       let minutes = new Date().getMinutes();
     

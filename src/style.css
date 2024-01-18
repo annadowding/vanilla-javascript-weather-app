@@ -41,26 +41,23 @@ form {
     width: 60%;
 }
 
-.temperature {
-    font-size: 25px;
+#cityName {
+    font-size: 50px;
     font-weight: bold;
 }
 
-/* .weatherData {
-    display: flex;
-    justify-content:space-around;
-
-} */
-
-.weather-data-detail {
-    padding: 0;
-}
 .weather-data-temperature {
     text-align: right;
-    padding: 0;
 }
 
+#temperatureIcon {
+    font-size: 60px;
+}
 
+#temperature {
+    font-size: 60px;
+    font-weight: bold;
+}
 
 .forecast {
     display:inline-flex;
@@ -87,4 +84,38 @@ footer {
     padding-top: 10px; 
     text-align: center;
     font-size: 14px;
+}
+
+@media (max-width: 500px) {
+    .container {
+        padding: 24px;
+        max-width: 400px;
+    }
+    #cityName {
+        font-size: 32px;
+    }
+    .weather-data-tempearture {
+        padding: ;
+    }
+    .weather-data-detail {
+        font-size: 14px;
+    }
+    #temperatureIcon {
+        width: 50%;
+    }
+    #temperature {
+        font-size: 32px;
+    }
+    .forecast-day {
+        font-size: 10px;
+    }
+    .forecast-icon {
+        width: 50px;
+    }
+    .maxTemp, .minTemp {
+        font-size: 10px;
+    }
+    footer {
+        font-size: 10px;
+    }
 }
