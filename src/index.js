@@ -1,14 +1,10 @@
-
-
 function displayForecast (response) {
-    console.log(response);
       let forecastElement = document.querySelector("#forecast");
 
 
       let forecastHtml = "";
 
       response.data.list.forEach(function (today) {
-        console.log(today);
         let date = new Date(today.dt * 1000);
         let days = ["Sun", "Mon","Tue", "Wed", "Thu", "Fri", "Sat"];
         let day = days[date.getDay()];
@@ -21,7 +17,8 @@ if (text.includes("15:00:00")) {
               <img src="https://openweathermap.org/img/wn/${today.weather[0].icon}@2x.png" class="forecast-icon"/>
                   <span class="maxTemp">${Math.round(today.main.temp)}℃
                     </span>
-                    <span class="minTemp">${Math.round(today.main.feels_like)}℃
+                      
+                    <span class="minTemp">  ${Math.round(today.main.feels_like)}℃
                     </span>
           </div>`;
 
@@ -34,14 +31,10 @@ if (text.includes("15:00:00")) {
 function handleForecast (city) {
     let apiKey = "d1b6ead1e59b61fc5c228b89a0df9361";
     let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&cnt=200&appid=${apiKey}&units=metric`; 
-
-
-
       axios.get(apiUrl).then(displayForecast);
 }
 
 function callApi (response) {
-  console.log(response);
   let cityNameElement = document.querySelector("#cityName");
   let temperatureIconElement = document.querySelector("#temperatureIcon")
       let temperatureElement = document.querySelector("#temperature");
